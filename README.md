@@ -7,6 +7,7 @@ Unit 8: Group Milestone - README
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
+1. [Schema](#Schema)
 
 ## Overview
 ### Description
@@ -82,3 +83,146 @@ Volunteer HomeScreen:
 
 ### [BONUS] Interactive Prototype
 <img src="https://imgur.com/cGGnPMr.gif" width=500>
+
+
+## Schema 
+### Models
+#### Post
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | donor        | Pointer to User| post author-donor |
+   | title         | String     | name of the food item |
+   | details       | String   | details about the food item |
+   | vegetarian       | Boolean   | gives additional details |
+   | non-vegetarian       | Boolean   | gives additional details |
+   | homemade       | Boolean   | gives additional details |
+   | quantity | String   | quantity of the food item |
+   | startTime     | DateTime | start date-time for pickup |
+   | endTime     | DateTime | end date-time for pickup |
+   | location     | String | location for pickup |
+   | zipcode     | Number | zipcode for pickup |
+   | status        | String| status of the post made |
+   | volunteer        | Pointer to User| assigned volunteer to pickup |
+   
+#### User
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | userId      | String   | unique id for the user(default field) |
+   | password        | String| user password|
+   | name        | String| donor/volunteer name|
+   | phone        | Number| user phone  number|
+   | email        | String| user email id|
+   | address         | String     | user location |
+   | type       | String   | user type(donor/volunteer) |
+   | organization | String   | organization to which user belongs to |
+   
+### Networking
+#### List of network requests by screen
+   - SignUp Screen
+        - (Create/POST) Add a new user
+        ```swift
+         ParseUser user = new ParseUser();
+         user.setUsername("username");
+         user.setPassword("password");
+         user.setEmail("useremail@example.com");
+         user.put("phone", "650-253-0000");
+         user.put("type","Donor")
+         user.put("address","123 street")
+         user.signUpInBackground(new SignUpCallback() {
+         public void done(ParseException e) {
+         if (e == null) {
+       // sign up successful 
+        } else {
+      // Sign up didn't succeed. Look at the ParseException
+       }
+      }
+     });
+      ```
+         
+         
+   - Login Screen
+        - (Read/Get) Authenticate user credentials
+        ```swift
+        ParseUser.logInInBackground("user1","user1password", new LogInCallback() {
+      public void done(ParseUser user, ParseException e) {
+     if (user != null) {
+       // user is logged in.
+        } else {
+          // Login failed. Look at the ParseException to see what happened.
+        }
+      }
+        });
+        ```
+   - Donor Home Page
+        - (Create/POST) Create a new post object with food details
+       ```swift  
+        ParseObject foodDetails = new ParseObject("FoodPost");
+        foodDetails.put("donor", parseUser.getCurrentUser());
+        foodDetails.put("title", "Food available");
+        foodDetails.put("details", "Briyani and roti");
+        foodDetails.put("vegetarian", false);
+        foodDetails.put("non-vegetarian", true);
+        foodDetails.put("homemade", false);
+        foodDetails.put("quantity", "5 packets briyani and 10 rotis");
+        foodDetails.put("startTime", "2021-5-20 09:30:00" );
+        foodDetails.put("endTime","2021-5-20 11:30:00" );
+        foodDetails.put("location", "Arlington,Texas");
+        foodDetails.put("zipcode", 76013);
+        foodDetails.put("status", "Waiting for confirmation from Volunteer");
+        foodDetails.put("volunteer", );
+        foodDetails.saveInBackground();
+     ```
+     
+        
+       - (Update/Put) Update status of post
+  ```swift
+       ParseQuery<ParseObject> query = ParseQuery.getQuery("FoodPost");
+
+      // Retrieve the food post object by id
+      query.getInBackground("xWMyZ4YEGZ", new GetCallback<ParseObject>() {
+      public void done(ParseObject foodDetails, ParseException e) {
+      if (e == null) {
+      // update the pick up status In this case, it can be either done or cancel
+          foodDetails.put("status", "cancel");
+          foodDetails.saveInBackground();
+        }
+      }
+      });
+```   
+
+        
+  - Volunteer Home Page
+      - (Read/Get) Query all posts based on user location
+      ```swift
+      ParseQuery<ParseObject> query = ParseQuery.getQuery("FoodPost");
+    query.fromLocalDatastore();
+    query.getInBackground("xWMyZ4YEGZ", new GetCallback<ParseObject>() {
+      public void done(ParseObject object, ParseException e) {
+    if (e == null) {
+      // object will be the food post(posted by donor)
+    } else {
+      // something went wrong
+    }
+    }
+    });
+    ```
+
+- (Update/Put) Update the pickup status
+   ```swift  
+   ParseQuery<ParseObject> query = ParseQuery.getQuery("FoodPost");
+
+  // Retrieve the food post object by id
+  query.getInBackground("xWMyZ4YEGZ", new GetCallback<ParseObject>() {
+  public void done(ParseObject foodDetails, ParseException e) {
+    if (e == null) {
+      // update the pick up status In this case, it can be either done or cancel
+      foodDetails.put("status", "pickup confirmed");
+      foodDetails.put("volunteer", parseUser.getCurrentUser());
+      foodDetails.saveInBackground();
+    }
+  }
+  });
+    ```  
