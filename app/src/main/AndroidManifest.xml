@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HaltingHunger">
         <activity android:name=".SignUp"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".HomeDonor"></activity>
+        <activity android:name=".HomeBeneficiary"></activity>
+
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
