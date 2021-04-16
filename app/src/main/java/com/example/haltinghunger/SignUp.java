@@ -25,7 +25,7 @@ public class SignUp extends AppCompatActivity {
     RadioGroup userType;
     RadioButton typeBtn;
     EditText userOrg;
-    Button signUpBtn;
+    Button registerBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +39,9 @@ public class SignUp extends AppCompatActivity {
         userEmail = findViewById(R.id.etEmail);
         userOrg = findViewById(R.id.etOrganization);
         userType = (RadioGroup)findViewById(R.id.roleType);
-        signUpBtn = (Button)findViewById(R.id.btnRegister);
+        registerBtn = (Button)findViewById(R.id.btnRegister);
 
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
+        registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     int typeId = userType.getCheckedRadioButtonId();
@@ -75,7 +75,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void goToLoginPage() {
-        Intent i = new Intent(this,MainActivity.class);
+        Intent i = new Intent(this,LoginActivity.class);
         startActivity(i);
         finish();
     }
