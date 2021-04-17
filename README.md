@@ -2,13 +2,29 @@
 
 ## Table of Contents
 1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
-1. [Schema](#Schema)
+2. [User Stories](#User-Stories)
+3. [Product Spec](#Product-Spec)
+4. [Wireframes](#Wireframes)
+5. [Schema](#Schema)
 
 ## Overview
 ### Description
 Halting Hunger is a platform that connects food donors and volunteers, who are willing to deliver food to people in need. Donor can post food details and location in the app. Volunteers can check for donors based on their location and pick up the food from them. 
+
+## User Stories
+
+The following functionality is completed:
+- [x] set up **Parse Server**
+- [x] User can sign up as Donor/Volunteer
+- [x] User can login to the application
+- [x] Afte login Donor can view form to add food donation details
+- [x] Logout from the application
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/hungerheroes/halting-hunger/blob/master/sprint1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ### App Evaluation
 - **Category:** Food & Drink
