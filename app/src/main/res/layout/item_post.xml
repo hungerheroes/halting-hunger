@@ -5,29 +5,21 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/ivFoodImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <TextView
         android:id="@+id/tvDonorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivFoodImage"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
-        tools:text="Name  of donor" />
+        android:layout_toEndOf="@+id/tvTitle"
+        tools:text="Donor name" />
 
     <TextView
-        android:id="@+id/tvTimePostedAgo"
+        android:id="@+id/tvTimeStamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivFoodImage"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="250dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_toEndOf="@+id/tvDonorName"
@@ -35,11 +27,32 @@
 
     <TextView
         android:id="@+id/tvItems"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="268dp"
+        android:layout_height="117dp"
         android:layout_below="@+id/tvDonorName"
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         tools:text="Names and quantities of items up for donation in this particular lot" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        tools:text="Post Title" />
+
+    <Button
+        android:id="@+id/btnBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvItems"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/tvItems"
+        android:text="Book" />
 </RelativeLayout>
