@@ -14,6 +14,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG="LoginActivity";
     private EditText etUsername;
@@ -59,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 gotoHomeOfUser();
-//                ParseUser.getCurrentUser().get
+//                ParseUser.getCurrentUser().UserClass.gettype();
                 Toast.makeText(LoginActivity.this,"Success!", Toast.LENGTH_SHORT).show();
             }
         });
