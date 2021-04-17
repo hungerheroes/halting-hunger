@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.item_post);
+        setContentView(R.layout.create_post);
     }
 
     @Override
