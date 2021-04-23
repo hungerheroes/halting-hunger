@@ -10,6 +10,6 @@ public class HomeDonor extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.item_post);
+        setContentView(R.layout.create_post);
     }
 }
