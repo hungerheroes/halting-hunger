@@ -42,4 +42,5 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:${appCompatVersion}"
     implementation "com.google.android.material:material:${designSupportVersion}"
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
 }
