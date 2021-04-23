@@ -30,10 +30,10 @@
 
 
     <CheckBox
-        android:id="@+id/chVeg"
+        android:id="@+id/chNVeg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vegetarian" />
+        android:text="Non-Vegetarian" />
 
     <CheckBox
         android:id="@+id/chHomemade"
@@ -55,11 +55,11 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:ems="10"
-        android:hint="ZipCode"/>
-
+        android:hint="ZipCode"
+        android:inputType="number" />
 
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Post" />
