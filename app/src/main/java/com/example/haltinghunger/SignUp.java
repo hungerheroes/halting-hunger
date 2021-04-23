@@ -51,7 +51,7 @@ public class SignUp extends AppCompatActivity {
                     ParseUser user = new ParseUser();
                     user.setUsername(registerUserName.getText().toString());
                     user.setPassword(registerPassword.getText().toString());
-                    user.setEmail(userEmail.getText().toString());
+                     user.setEmail(userEmail.getText().toString());
                     user.put("phone",phoneNumber);
                     user.put("address",userAddress.getText().toString());
                     user.put("organization",userOrg.getText().toString());

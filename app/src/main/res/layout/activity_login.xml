@@ -47,6 +47,27 @@
         android:hint="Password"
         android:inputType="textPassword" />
 
+    <RadioGroup
+        android:id="@+id/loginUserType"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_weight="1">
+
+        <RadioButton
+            android:id="@+id/loginDonarBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Donor" />
+
+        <RadioButton
+            android:id="@+id/loginVolunteerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Volunteer" />
+    </RadioGroup>
+
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
