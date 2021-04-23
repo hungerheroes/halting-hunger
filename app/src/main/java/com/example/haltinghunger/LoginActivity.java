@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
@@ -20,7 +22,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
+    RadioGroup loginUserType;
+    RadioButton loginTypeBtn;
     Button signUpBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +34,18 @@ public class LoginActivity extends AppCompatActivity {
         etUsername=findViewById(R.id.etUsername);
         etPassword=findViewById(R.id.etPassword);
         btnLogin=findViewById(R.id.btnLogin);
+        loginUserType = findViewById(R.id.loginUserType);
         btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Log.i(TAG,"onclick login button");
                 String username=etUsername.getText().toString();
                 String password=etPassword.getText().toString();
-                loginUser(username,password);
+                int loginUserTypeId = loginUserType.getCheckedRadioButtonId();
+                loginTypeBtn = loginUserType.findViewById(loginUserTypeId);
+                String loginSelectedType = (String) loginTypeBtn.getText();
+
+                loginUser(username,password,loginSelectedType);
             }
         });
 
@@ -48,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void loginUser(String username, String password) {
+    private void loginUser(String username, String password,String loginSelectedType) {
         Log.i(TAG,"Login occurs "+username);
         ParseUser.logInInBackground(username,password,new LogInCallback(){
 
@@ -59,11 +69,22 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this,"Issue with login - please retry!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                gotoHomeOfUser();
+                if(loginSelectedType.equals("Donor")){
+                    gotoHomeOfUser();
+                }else if(loginSelectedType.equals("Volunteer")){
+                   goToBeneficiaryHome();
+                }
+
 //                ParseUser.getCurrentUser().UserClass.gettype();
                 Toast.makeText(LoginActivity.this,"Success!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void goToBeneficiaryHome() {
+        Intent i =new Intent(this,HomeBeneficiary.class);
+        startActivity(i);
+        finish();
     }
 
     private void gotoHomeOfUser() {
