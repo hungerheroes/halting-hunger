@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etLocation;
     private EditText etZipCode;
     private Button btnSubmit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
