@@ -17,7 +17,9 @@ The following functionality is completed:
 - [x] Redirecting user to homepage(Donor/Volunteer) based on role
 - [x] Donor can post data.
 - [x] Fragment in volunteer home after login 
+- [x] Bottom Navigation tabs enables using fragments in Volunteer home page
 - [x] Displaying donor posts in Volunteer home page
+
 
 ## Sprint-1 User Stories
 
