@@ -1,6 +1,8 @@
 package com.example.haltinghunger;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -10,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.parse.ParseUser;
 import com.example.haltinghunger.fragments.BeneficiaryStatusFragment;
 import com.example.haltinghunger.fragments.ViewPostFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,7 +23,7 @@ public class HomeBeneficiary extends AppCompatActivity {
     public static final String TAG = "HomeBeneficiary";
     RecyclerView rvPosts;
     List<Post> posts;
-    PostsAdapter adapter;
+    FoodPostsAdapter adapter;
     private BottomNavigationView bottomNavigationView;
     final FragmentManager fragmentManager = getSupportFragmentManager();
     @Override
@@ -51,5 +54,24 @@ public class HomeBeneficiary extends AppCompatActivity {
         });
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.action_home);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);   
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.Logout){
+            ParseUser.logOut();
+            ParseUser currentUser = ParseUser.getCurrentUser();
+            Intent i =new Intent(this,LoginActivity.class);
+            startActivity(i);
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

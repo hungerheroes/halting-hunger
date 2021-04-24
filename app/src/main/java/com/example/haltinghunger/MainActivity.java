@@ -126,21 +126,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void queryPosts(){
-        ParseQuery<FoodPost> query=ParseQuery.getQuery(FoodPost.class);
-        query.include(FoodPost.KEY_TITLE);
-        query.findInBackground(new FindCallback<FoodPost>() {
-            @Override
-            public void done(List<FoodPost> FoodPosts, ParseException e) {
-                if(e!=null)
-                {
-                    Log.e(TAG,"Issue with getting posts",e);
-                    return;
-                }
-                for(FoodPost FoodPost : FoodPosts){
-                    Log.i(TAG,"ANS!: "+FoodPost.getTitle()+" "+FoodPost.getDetails());
-                }
-            }
-        });
-    }
 }
