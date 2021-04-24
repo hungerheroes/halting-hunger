@@ -21,6 +21,13 @@ The following functionality is completed:
 - [x] Displaying donor posts in Volunteer home page
 
 
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/hungerheroes/halting-hunger/blob/master/sprint2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
 ## Sprint-1 User Stories
 
 The following functionality is completed:
