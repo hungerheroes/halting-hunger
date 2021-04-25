@@ -1,5 +1,7 @@
 package com.example.haltinghunger;
 
+import com.parse.ParseObject;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,7 +9,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Post {
+public class Post extends ParseObject {
     public String title;
     public String[] items;
     public String created_at;
