@@ -35,12 +35,12 @@ public class TimeFormatter {
                 Calendar then = Calendar.getInstance();
                 then.setTime(format.parse(rawJsonDate));
                 if (now.get(Calendar.YEAR) == then.get(Calendar.YEAR)) {
-                    time = String.valueOf(then.get(Calendar.DAY_OF_MONTH)) + " "
+                    time = then.get(Calendar.DAY_OF_MONTH) + " "
                             + then.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.US);
                 } else {
-                    time = String.valueOf(then.get(Calendar.DAY_OF_MONTH)) + " "
+                    time = then.get(Calendar.DAY_OF_MONTH) + " "
                             + then.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.US)
-                            + " " + String.valueOf(then.get(Calendar.YEAR) - 2000);
+                            + " " + (then.get(Calendar.YEAR) - 2000);
                 }
             }
         } catch (ParseException e) {

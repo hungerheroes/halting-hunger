@@ -1,7 +1,5 @@
 package com.example.haltinghunger;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +9,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.parse.Parse;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -19,7 +18,7 @@ import com.parse.SignUpCallback;
 public class SignUp extends AppCompatActivity {
     EditText registerUserName;
     EditText registerPassword;
-    EditText  userPhone;
+    EditText userPhone;
     EditText userAddress;
     EditText userEmail;
     RadioGroup userType;
@@ -38,36 +37,36 @@ public class SignUp extends AppCompatActivity {
         userAddress = findViewById(R.id.etAddress);
         userEmail = findViewById(R.id.etEmail);
         userOrg = findViewById(R.id.etOrganization);
-        userType = (RadioGroup)findViewById(R.id.roleType);
-        registerBtn = (Button)findViewById(R.id.btnRegister);
+        userType = (RadioGroup) findViewById(R.id.roleType);
+        registerBtn = (Button) findViewById(R.id.btnRegister);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    int typeId = userType.getCheckedRadioButtonId();
-                    RadioButton radioButton = (RadioButton) userType.findViewById(typeId);
-                    String selectedType = (String) radioButton.getText();
-                    Integer phoneNumber = Integer.parseInt(userPhone.getText().toString());
-                    ParseUser user = new ParseUser();
-                    user.setUsername(registerUserName.getText().toString());
-                    user.setPassword(registerPassword.getText().toString());
-                     user.setEmail(userEmail.getText().toString());
-                    user.put("phone",phoneNumber);
-                    user.put("address",userAddress.getText().toString());
-                    user.put("organization",userOrg.getText().toString());
-                    user.put("type",selectedType);
-                    user.signUpInBackground(new SignUpCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            if(e!=null){
-                                Toast.makeText(getApplicationContext(),"Issue with Sign Up",Toast.LENGTH_SHORT).show();
-                                return;
-                            }
-                            goToLoginPage();
-                            Toast.makeText(getApplicationContext(),"Success!",Toast.LENGTH_SHORT).show();
-
+                int typeId = userType.getCheckedRadioButtonId();
+                RadioButton radioButton = (RadioButton) userType.findViewById(typeId);
+                String selectedType = (String) radioButton.getText();
+                Integer phoneNumber = Integer.parseInt(userPhone.getText().toString());
+                ParseUser user = new ParseUser();
+                user.setUsername(registerUserName.getText().toString());
+                user.setPassword(registerPassword.getText().toString());
+                user.setEmail(userEmail.getText().toString());
+                user.put("phone", phoneNumber);
+                user.put("address", userAddress.getText().toString());
+                user.put("organization", userOrg.getText().toString());
+                user.put("type", selectedType);
+                user.signUpInBackground(new SignUpCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e != null) {
+                            Toast.makeText(getApplicationContext(), "Issue with Sign Up", Toast.LENGTH_SHORT).show();
+                            return;
                         }
-                    });
+                        goToLoginPage();
+                        Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
 
             }
         });
@@ -75,7 +74,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void goToLoginPage() {
-        Intent i = new Intent(this,LoginActivity.class);
+        Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
         finish();
     }

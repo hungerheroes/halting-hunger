@@ -4,7 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 enum Role {
-    DONOR, BENEFICIARY;
+    DONOR, BENEFICIARY
 }
 
 public class User {
