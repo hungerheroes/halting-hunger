@@ -12,20 +12,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.parse.ParseUser;
 import com.example.haltinghunger.fragments.BeneficiaryStatusFragment;
 import com.example.haltinghunger.fragments.ViewPostFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.ParseUser;
 
 import java.util.List;
 
 public class HomeBeneficiary extends AppCompatActivity {
     public static final String TAG = "HomeBeneficiary";
+    final FragmentManager fragmentManager = getSupportFragmentManager();
     RecyclerView rvPosts;
     List<Post> posts;
     FoodPostsAdapter adapter;
     private BottomNavigationView bottomNavigationView;
-    final FragmentManager fragmentManager = getSupportFragmentManager();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,12 +40,12 @@ public class HomeBeneficiary extends AppCompatActivity {
                 Fragment fragment;
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        Toast.makeText(HomeBeneficiary.this,"Home!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeBeneficiary.this, "Home!", Toast.LENGTH_SHORT).show();
                         fragment = new ViewPostFragment();
                         break;
                     case R.id.action_volunteerStatus:
                     default:
-                        Toast.makeText(HomeBeneficiary.this,"Status!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeBeneficiary.this, "Status!", Toast.LENGTH_SHORT).show();
                         fragment = new BeneficiaryStatusFragment();
                         break;
                 }
@@ -58,16 +59,16 @@ public class HomeBeneficiary extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu,menu);   
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==R.id.Logout){
+        if (item.getItemId() == R.id.Logout) {
             ParseUser.logOut();
             ParseUser currentUser = ParseUser.getCurrentUser();
-            Intent i =new Intent(this,LoginActivity.class);
+            Intent i = new Intent(this, LoginActivity.class);
             startActivity(i);
             finish();
             return true;

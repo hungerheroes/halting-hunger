@@ -10,21 +10,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-    <EditText
-        android:id="@+id/etTitle"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:ems="10"
-        android:hint="Title"/>
 
-    <EditText
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:ems="10"
+            android:hint="Title" />
+
+        <EditText
         android:id="@+id/etDetails"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:ems="10"
         android:hint="Details"/>
 
-    <EditText
+        <Button
+            android:id="@+id/btnUploadImg"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:text="Upload Image" />
+
+        <ImageView
+            android:id="@+id/etPostImage"
+            android:layout_width="141dp"
+            android:layout_height="168dp"
+            app:srcCompat="@drawable/bg1" />
+
+        <EditText
         android:id="@+id/etQuantity"
         android:layout_width="match_parent"
         android:layout_height="60dp"

@@ -1,18 +1,18 @@
 package com.example.haltinghunger.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.haltinghunger.FoodPost;
 import com.example.haltinghunger.FoodPostsAdapter;
@@ -26,10 +26,11 @@ import java.util.List;
 
 
 public class ViewPostFragment extends Fragment {
+    public static final String TAG = "ViewPostFrag";
     private Button filterBtn;
+    private EditText etZipcode;
     private RecyclerView rvDisplayPosts;
     private FoodPostsAdapter adapter;
-    public static final String TAG="ViewPostFrag";
     private List<FoodPost> allPosts;
 
     public ViewPostFragment() {
@@ -67,30 +68,64 @@ public class ViewPostFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         filterBtn = view.findViewById(R.id.btnFilter);
+        etZipcode = view.findViewById(R.id.etZipcode);
         rvDisplayPosts = view.findViewById(R.id.rvDisplayPosts);
 
-        allPosts=new ArrayList<>();
-        adapter=new FoodPostsAdapter(getContext(),allPosts);
+        allPosts = new ArrayList<>();
+        adapter = new FoodPostsAdapter(getContext(), allPosts);
 
         rvDisplayPosts.setAdapter(adapter);
         rvDisplayPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        filterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (etZipcode.getText().toString().trim().length() > 0) {
+                    final Integer zipcode = Integer.parseInt(etZipcode.getText().toString());
+                    Log.i("Filter btn click", "Zip " + zipcode);
+                    queryPosts(zipcode);
+                } else {
+                    queryPosts();
+                }
+            }
+        });
         queryPosts();
     }
 
-    private void queryPosts(){
-        ParseQuery<FoodPost> query=ParseQuery.getQuery(FoodPost.class);
+    private void queryPosts() {
+        ParseQuery<FoodPost> query = ParseQuery.getQuery(FoodPost.class);
         query.include(FoodPost.KEY_DONOR);
         query.findInBackground(new FindCallback<FoodPost>() {
             @Override
             public void done(List<FoodPost> FoodPosts, ParseException e) {
-                if(e!=null)
-                {
-                    Log.e(TAG,"Issue with getting posts",e);
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
-                for(FoodPost FoodPost : FoodPosts){
-                    Log.i(TAG,"ANS!: "+FoodPost.getTitle()+"// "+FoodPost.getZipCode()+"// "+FoodPost.getDonor().getUsername());
+                for (FoodPost FoodPost : FoodPosts) {
+                    Log.i(TAG, "ANS!: " + FoodPost.getTitle() + "// " + FoodPost.getZipCode() + "// " + FoodPost.getDonor().getUsername());
                 }
+                allPosts.clear();
+                allPosts.addAll(FoodPosts);
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    private void queryPosts(Integer zipcode) {
+        ParseQuery<FoodPost> query = ParseQuery.getQuery(FoodPost.class);
+        query.include(FoodPost.KEY_DONOR);
+        query.whereEqualTo("zipcode", zipcode);
+        query.findInBackground(new FindCallback<FoodPost>() {
+            @Override
+            public void done(List<FoodPost> FoodPosts, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+                for (FoodPost FoodPost : FoodPosts) {
+                    Log.i(TAG, "ANS!: " + FoodPost.getTitle() + "// " + FoodPost.getZipCode() + "// " + FoodPost.getDonor().getUsername());
+                }
+                allPosts.clear();
                 allPosts.addAll(FoodPosts);
                 adapter.notifyDataSetChanged();
             }
