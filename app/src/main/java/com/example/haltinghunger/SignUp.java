@@ -21,8 +21,6 @@ public class SignUp extends AppCompatActivity {
     EditText userPhone;
     EditText userAddress;
     EditText userEmail;
-    RadioGroup userType;
-    RadioButton typeBtn;
     EditText userOrg;
     Button registerBtn;
 
@@ -37,16 +35,15 @@ public class SignUp extends AppCompatActivity {
         userAddress = findViewById(R.id.etAddress);
         userEmail = findViewById(R.id.etEmail);
         userOrg = findViewById(R.id.etOrganization);
-        userType = (RadioGroup) findViewById(R.id.roleType);
         registerBtn = (Button) findViewById(R.id.btnRegister);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int typeId = userType.getCheckedRadioButtonId();
-                RadioButton radioButton = (RadioButton) userType.findViewById(typeId);
-                String selectedType = (String) radioButton.getText();
-                Integer phoneNumber = Integer.parseInt(userPhone.getText().toString());
+//                int typeId = userType.getCheckedRadioButtonId();
+//                RadioButton radioButton = (RadioButton) userType.findViewById(typeId);
+//                String selectedType = (String) radioButton.getText();
+                Integer phoneNumber = Integer.valueOf(userPhone.getText().toString());
                 ParseUser user = new ParseUser();
                 user.setUsername(registerUserName.getText().toString());
                 user.setPassword(registerPassword.getText().toString());
@@ -54,7 +51,7 @@ public class SignUp extends AppCompatActivity {
                 user.put("phone", phoneNumber);
                 user.put("address", userAddress.getText().toString());
                 user.put("organization", userOrg.getText().toString());
-                user.put("type", selectedType);
+//                user.put("type", selectedType);
                 user.signUpInBackground(new SignUpCallback() {
                     @Override
                     public void done(ParseException e) {
