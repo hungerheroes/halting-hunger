@@ -28,7 +28,9 @@ import java.util.List;
 public class ViewPostFragment extends Fragment {
     public static final String TAG = "ViewPostFrag";
     private Button filterBtn;
+    private Button searchBtn;
     private EditText etZipcode;
+    private EditText etItemSearch;
     private RecyclerView rvDisplayPosts;
     private FoodPostsAdapter adapter;
     private List<FoodPost> allPosts;
@@ -68,7 +70,9 @@ public class ViewPostFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         filterBtn = view.findViewById(R.id.btnFilter);
+        searchBtn = view.findViewById(R.id.btnSearch);
         etZipcode = view.findViewById(R.id.etZipcode);
+        etItemSearch = view.findViewById(R.id.etItemSearch);
         rvDisplayPosts = view.findViewById(R.id.rvDisplayPosts);
 
         allPosts = new ArrayList<>();
@@ -83,6 +87,18 @@ public class ViewPostFragment extends Fragment {
                     final Integer zipcode = Integer.parseInt(etZipcode.getText().toString());
                     Log.i("Filter btn click", "Zip " + zipcode);
                     queryPosts(zipcode);
+                } else {
+                    queryPosts();
+                }
+            }
+        });
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (etItemSearch.getText().toString().trim().length() > 0) {
+                    final String searchItem = etItemSearch.getText().toString();
+                    Log.i("Filter btn click", "search for " + searchItem);
+                    queryPosts(searchItem);
                 } else {
                     queryPosts();
                 }
@@ -115,6 +131,28 @@ public class ViewPostFragment extends Fragment {
         ParseQuery<FoodPost> query = ParseQuery.getQuery(FoodPost.class);
         query.include(FoodPost.KEY_DONOR);
         query.whereEqualTo("zipcode", zipcode);
+        query.findInBackground(new FindCallback<FoodPost>() {
+            @Override
+            public void done(List<FoodPost> FoodPosts, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+                for (FoodPost FoodPost : FoodPosts) {
+                    Log.i(TAG, "ANS!: " + FoodPost.getTitle() + "// " + FoodPost.getZipCode() + "// " + FoodPost.getDonor().getUsername());
+                }
+                allPosts.clear();
+                allPosts.addAll(FoodPosts);
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    private void queryPosts(String searchItem) {
+        ParseQuery<FoodPost> query = ParseQuery.getQuery(FoodPost.class);
+        query.include(FoodPost.KEY_DONOR);
+//        query.whereContains("details", searchItem);
+        query.whereMatches("details", "(" + searchItem + ")", "i");
         query.findInBackground(new FindCallback<FoodPost>() {
             @Override
             public void done(List<FoodPost> FoodPosts, ParseException e) {
