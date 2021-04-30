@@ -1,6 +1,7 @@
 package com.example.haltinghunger;
 
 import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -14,6 +15,7 @@ public class FoodPost extends ParseObject {
     public static final String KEY_HM = "homemade";
     public static final String KEY_LOCATION = "location";
     public static final String KEY_ZIPCODE = "zipcode";
+    public static final String KEY_IMAGE= "image";
 
     public ParseUser getDonor() {
         return getParseUser(KEY_DONOR);
@@ -78,4 +80,11 @@ public class FoodPost extends ParseObject {
     public void setZipCode(Integer zipCode) {
         put(KEY_ZIPCODE, zipCode);
     }
+    public ParseFile getImage(){
+        return  getParseFile(KEY_IMAGE);
+    }
+    public void setImage(ParseFile parseFile){
+        put(KEY_IMAGE,parseFile);
+    }
+
 }
