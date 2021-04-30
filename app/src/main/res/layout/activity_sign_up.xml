@@ -50,27 +50,6 @@
         android:hint="Email"
         android:inputType="textEmailAddress" />
 
-    <RadioGroup
-        android:id="@+id/roleType"
-        android:layout_width="match_parent"
-        android:layout_height="98dp">
-
-        <RadioButton
-            android:id="@+id/donarBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:checked="false"
-            android:text="Donor" />
-
-        <RadioButton
-            android:id="@+id/volunteerBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="Volunteer" />
-    </RadioGroup>
-
     <EditText
         android:id="@+id/etOrganization"
         android:layout_width="match_parent"

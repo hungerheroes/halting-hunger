@@ -45,6 +45,20 @@ public class MainActivity extends AppCompatActivity {
     private Button btnUploadImg;
     private File photoFile;
     public String photoFileName = "photo.jpg";
+
+    public EditText etMonth;
+    public EditText etMonth1;
+    public EditText etDate;
+    public EditText etDate1;
+    public EditText etYear;
+    public EditText etYear1;
+    public EditText etHour;
+    public EditText etHour1;
+    public EditText etMin;
+    public EditText etMin1;
+    public EditText etAmPm;
+    public EditText etAmPm1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -62,6 +76,19 @@ public class MainActivity extends AppCompatActivity {
         btnSubmit = findViewById(R.id.btnSubmit);
         etPostImage = findViewById(R.id.etPostImage);
         btnUploadImg = findViewById(R.id.btnUploadImg);
+
+        etMonth=findViewById(R.id.etMonth);
+        etMonth1 = findViewById(R.id.etMonth1);
+        etDate = findViewById(R.id.etDate);
+        etDate1 = findViewById(R.id.etDate1);
+        etYear = findViewById(R.id.etYear);
+        etYear1 = findViewById(R.id.etYear1);
+        etHour = findViewById(R.id.etHour);
+        etHour1 = findViewById(R.id.etHour1);
+        etMin = findViewById(R.id.etMin);
+        etMin1 = findViewById(R.id.etMin1);
+        etAmPm = findViewById(R.id.etAmPm);
+        etAmPm1=findViewById(R.id.etAmPm1);
 
         btnUploadImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 String details = etDetails.getText().toString();
                 String quantity = etQuantity.getText().toString();
+
+                String start_date=(etMonth.getText().toString())+"/"+(etDate.getText().toString())+"/"+(etYear.getText().toString());
+                String start_time=(etHour.getText().toString())+":"+(etMin.getText().toString())+" "+(etAmPm.getText().toString());
+                String end_date=(etMonth1.getText().toString())+"/"+(etDate1.getText().toString())+"/"+(etYear1.getText().toString());
+                String end_time=(etHour1.getText().toString())+":"+(etMin1.getText().toString())+" "+(etAmPm1.getText().toString());
+
                 Boolean nv = false, hm = false;
                 if (chNVeg.isChecked()) {
                     nv = true;
@@ -95,7 +128,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "No image", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                savePost(currentUser, title, details, quantity, nv, hm, location, zip,photoFile);
+                String status="Waiting for confirmation";
+                savePost(currentUser, title, details, quantity, nv, hm, location, zip,photoFile, start_date,start_time,end_date,end_time,status);
             }
         });
     }
@@ -154,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    private void savePost(ParseUser currentUser, String title, String details, String quantity, Boolean nv, Boolean hm, String location, Integer zip,File photoFile) {
+    private void savePost(ParseUser currentUser, String title, String details, String quantity, Boolean nv, Boolean hm, String location, Integer zip, File photoFile, String start_date, String start_time, String end_date, String end_time, String status) {
         FoodPost fp = new FoodPost();
         fp.setDonor(currentUser);
         fp.setTitle(title);
@@ -165,6 +199,11 @@ public class MainActivity extends AppCompatActivity {
         fp.setLocation(location);
         fp.setZipCode(zip);
         fp.setImage(new ParseFile(photoFile));
+        fp.setStartDate(start_date);
+        fp.setStartTime(start_time);
+        fp.setEndDate(end_date);
+        fp.setEndTime(end_time);
+        fp.setStatus(status);
         fp.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -181,6 +220,18 @@ public class MainActivity extends AppCompatActivity {
                 etLocation.setText("");
                 etZipCode.setText("");
                 etPostImage.setImageResource(0);
+                etMonth.setText("");
+                etMonth1.setText("");
+                etDate.setText("");
+                etDate1.setText("");
+                etYear.setText("");
+                etYear1.setText("");
+                etHour.setText("");
+                etHour1.setText("");
+                etMin.setText("");
+                etMin1.setText("");
+                etAmPm.setText("");
+                etAmPm1.setText("");
             }
         });
     }

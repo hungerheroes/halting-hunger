@@ -17,6 +17,13 @@ public class FoodPost extends ParseObject {
     public static final String KEY_ZIPCODE = "zipcode";
     public static final String KEY_IMAGE= "image";
 
+    public static final String KEY_STARTDATE="start_date";
+    public static final String KEY_STARTTIME="start_time";
+    public static final String KEY_ENDDATE="end_date";
+    public static final String KEY_ENDTIME="end_time";
+
+    public static final String KEY_STATUS= "status";
+
     public ParseUser getDonor() {
         return getParseUser(KEY_DONOR);
     }
@@ -85,6 +92,41 @@ public class FoodPost extends ParseObject {
     }
     public void setImage(ParseFile parseFile){
         put(KEY_IMAGE,parseFile);
+    }
+
+    public String getStartDate() {
+        return getString(KEY_STARTDATE);
+    }
+    public void setStartDate(String start_date) {
+        put(KEY_STARTDATE, start_date);
+    }
+
+    public String getStartTime() {
+        return getString(KEY_STARTTIME);
+    }
+    public void setStartTime(String start_time) {
+        put(KEY_STARTTIME, start_time);
+    }
+
+    public String getEndDate() {
+        return getString(KEY_ENDDATE);
+    }
+    public void setEndDate(String end_date) {
+        put(KEY_ENDDATE, end_date);
+    }
+
+    public String getEndTime() {
+        return getString(KEY_ENDTIME);
+    }
+    public void setEndTime(String end_time) {
+        put(KEY_ENDTIME, end_time);
+    }
+
+    public String getStatus() {
+        return getString(KEY_STATUS);
+    }
+    public void setStatus(String status) {
+        put(KEY_STATUS, status);
     }
 
 }
