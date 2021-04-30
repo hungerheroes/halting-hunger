@@ -72,7 +72,7 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
             tvDetails.setText(fp.getDetails());
             tvQuantity.setText(fp.getQuantity());
             tvLocation.setText(fp.getLocation());
-//            tvZipCode.setText(fp.getZipCode());
+            tvZipCode.setText(String.valueOf(fp.getZipCode()));
         }
     }
 }
