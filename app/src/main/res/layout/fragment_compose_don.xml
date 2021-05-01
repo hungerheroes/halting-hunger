@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments_don.ComposeFragment">
+
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="600dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:ems="10"
+                android:hint="Title" />
+
+            <EditText
+                android:id="@+id/etDetails"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:ems="10"
+                android:hint="Details" />
+
+            <Button
+                android:id="@+id/btnUploadImg"
+                android:layout_width="147dp"
+                android:layout_height="wrap_content"
+                android:text="Upload Image" />
+
+            <ImageView
+                android:id="@+id/etPostImage"
+                android:layout_width="141dp"
+                android:layout_height="168dp"
+                app:srcCompat="@drawable/bg1" />
+
+            <EditText
+                android:id="@+id/etQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:ems="10"
+                android:hint="Quantity" />
+
+            <TextView
+                android:id="@+id/start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start Date/Time:"
+                android:textColor="#070707"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etMonth"
+                    android:layout_width="70dp"
+                    android:layout_height="60dp"
+                    android:ems="10"
+                    android:hint="Month"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/etDate"
+                    android:layout_width="70dp"
+                    android:layout_height="60dp"
+                    android:layout_toRightOf="@id/etMonth"
+                    android:ems="10"
+                    android:hint="Date"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/etYear"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:layout_toRightOf="@id/etDate"
+                    android:ems="10"
+                    android:hint="Year"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/etHour"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_toRightOf="@id/etYear"
+                    android:ems="10"
+                    android:hint="Hour"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/etMin"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_toRightOf="@id/etHour"
+                    android:ems="10"
+                    android:hint="Min"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/etAmPm"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_toRightOf="@id/etMin"
+                    android:ems="10"
+                    android:hint="AM/PM" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="End Date/Time:"
+                android:textColor="#070707"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etMonth1"
+                    android:layout_width="70dp"
+                    android:layout_height="60dp"
+                    android:ems="10"
+                    android:hint="Month"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/etDate1"
+                    android:layout_width="70dp"
+                    android:layout_height="60dp"
+                    android:layout_toRightOf="@id/etMonth1"
+                    android:ems="10"
+                    android:hint="Date"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/etYear1"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:layout_toRightOf="@id/etDate1"
+                    android:ems="10"
+                    android:hint="Year"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/etHour1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_toRightOf="@id/etYear1"
+                    android:ems="10"
+                    android:hint="Hour"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/etMin1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_toRightOf="@id/etHour1"
+                    android:ems="10"
+                    android:hint="Min"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/etAmPm1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_toRightOf="@id/etMin1"
+                    android:ems="10"
+                    android:hint="AM/PM" />
+            </RelativeLayout>
+
+            <CheckBox
+                android:id="@+id/chNVeg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Non-Vegetarian"
+                android:textColor="#070707"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/chHomemade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HomeMade"
+                android:textColor="#070707"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etLocation"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Location"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/etZipCode"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:ems="10"
+                android:hint="ZipCode"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Post" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

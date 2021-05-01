@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    tools:context=".HomeBeneficiary">
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/flContainer"
@@ -18,6 +17,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/menu_bottom_navigation_volunteer" />
-
+        app:menu="@menu/menu_bottom_navigation_donor" />
 </RelativeLayout>
