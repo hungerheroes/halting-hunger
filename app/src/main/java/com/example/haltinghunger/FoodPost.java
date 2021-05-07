@@ -27,6 +27,7 @@ public class FoodPost extends ParseObject {
     public static final String KEY_STATUS= "status";
     public static final String KEY_CREATED_KEY="createdAt";
 
+
     public ParseUser getDonor() {
         return getParseUser(KEY_DONOR);
     }

@@ -9,88 +9,116 @@
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-black"
-        android:textSize="30sp"
-        tools:text="Food" />
+        android:layout_height="46dp"
+        android:fontFamily="cursive"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="#AF3A3A"
+        tools:text="Title for Post" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+    <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvDetails"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:fontFamily="cursive"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="#000000"
+            tools:text="Bread packets" />
+
+        <TextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:fontFamily="cursive"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            tools:text="Few loafs of bread" />
+
+<!--            <CheckedTextView-->
+<!--                android:id="@+id/checkedTextView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="CheckedTextView" />-->
+
+        <!--    <CheckedTextView-->
+        <!--        android:id="@+id/simpleCheckedTextView"-->
+        <!--        android:layout_width="fill_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:checked="false"-->
+        <!--        android:gravity="center"-->
+        <!--        android:textSize="25sp"-->
+        <!--        android:checkMark="@drawable/checked"-->
+        <!--        android:text="Checked Text View" />-->
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:fontFamily="cursive"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            tools:text="Texas" />
+
+        <TextView
+            android:id="@+id/tvZipCode"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:fontFamily="cursive"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            tools:text="76012" />
+    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/bg" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/tvDonorName"
+        android:id="@+id/MarkStatus"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="20sp"
-        tools:text="Donor" />
-
-    <TextView
-        android:id="@+id/tvDetails"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="20sp"
-        tools:text="Bread packets" />
-
-    <TextView
-        android:id="@+id/tvQuantity"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="20sp"
-        tools:text="Few loafs of bread" />
-
-<!--    <CheckedTextView-->
-<!--        android:id="@+id/checkedTextView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="CheckedTextView" />-->
-
-<!--    <CheckedTextView-->
-<!--        android:id="@+id/simpleCheckedTextView"-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:checked="false"-->
-<!--        android:gravity="center"-->
-<!--        android:textSize="20sp"-->
-<!--        android:checkMark="@drawable/checked"-->
-<!--        android:text="Checked Text View" />-->
-
-    <TextView
-        android:id="@+id/tvLocation"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="20sp"
-        tools:text="Texas" />
-
-    <TextView
-        android:id="@+id/tvZipCode"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:inputType="number"
-        android:textSize="20sp"
-        tools:text="76012" />
+        android:layout_height="32dp"
+        android:fontFamily="cursive"
+        android:textColor="#AF3A3A"
+        android:text="Status:"
+        android:textStyle="bold"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvStatus"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="20sp"
+        android:layout_height="32dp"
+        android:fontFamily="cursive"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
         tools:text="Order picked up by this person" />
-
-    <TextView
-        android:id="@+id/tvVolunteer"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="20sp"
-        tools:text="Volunteer" />
 
     <Button
         android:id="@+id/btnCancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Cancel" />
 
 </LinearLayout>
