@@ -5,15 +5,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.haltinghunger.fragments_don.StatusFragment;
 import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.util.List;
 
@@ -61,6 +67,7 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
         CheckedTextView ckHm;
         TextView tvStart;
         TextView tvEnd;
+        Button btnCancel;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,6 +82,7 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
             ckHm=itemView.findViewById(R.id.ckHm);
             tvStart=itemView.findViewById(R.id.tvStart);
             tvEnd=itemView.findViewById(R.id.tvEnd);
+            btnCancel=itemView.findViewById(R.id.btnCancel);
         }
 
         public void bind(FoodPost fp) {
@@ -88,7 +96,6 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
             if(image!=null){
                 Glide.with(context).load(fp.getImage().getUrl()).into(ivImage);
             }
-
             tvStart.setText(fp.getStartDate()+" "+fp.getStartTime());
             tvEnd.setText(fp.getEndDate()+" "+fp.getEndTime());
             if(fp.getNV()==true){
@@ -98,6 +105,20 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
                 ckHm.setCheckMarkDrawable(R.drawable.check);
             }
 
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    fp.deleteInBackground(e -> {
+                        if(e==null){
+                            Log.i("Stat","Delete Successful");
+//                            clear();
+//                            notifyDataSetChanged();
+                        }else{
+                            Log.e("Stat",e.getMessage(),e);
+                        }
+                    });
+                }
+            });
         }
     }
 
