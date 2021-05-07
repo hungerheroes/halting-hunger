@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.ViewHolder> {
+public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsAdapter_status_don.ViewHolder> {
     Context context;
     List<FoodPost> foodPosts;
 
-    public FoodPostsAdapter(Context context, List<FoodPost> foodPosts) {
+    public FoodPostsAdapter_status_don(Context context, List<FoodPost> foodPosts) {
         this.context = context;
         this.foodPosts = foodPosts;
     }
@@ -23,7 +23,7 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.status_don_item_post, parent, false);
         return new ViewHolder(view);
     }
 
@@ -55,6 +55,8 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
         TextView tvQuantity;
         TextView tvLocation;
         TextView tvZipCode;
+        TextView tvStatus;
+        TextView tvVolunteer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,6 +66,8 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
             tvQuantity = itemView.findViewById(R.id.tvQuantity);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             tvZipCode = itemView.findViewById(R.id.tvZipCode);
+            tvStatus=itemView.findViewById(R.id.tvStatus);
+            tvVolunteer=itemView.findViewById(R.id.tvVolunteer);
         }
 
         public void bind(FoodPost fp) {
@@ -73,6 +77,8 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
             tvQuantity.setText(fp.getQuantity());
             tvLocation.setText(fp.getLocation());
             tvZipCode.setText(String.valueOf(fp.getZipCode()));
+            tvStatus.setText(fp.getStatus());
+//            tvVolunteer.setText(fp.getDonor().getUsername());
         }
     }
 

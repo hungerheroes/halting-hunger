@@ -5,6 +5,8 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import java.util.Date;
+
 @ParseClassName("Post")
 public class FoodPost extends ParseObject {
     public static final String KEY_DONOR = "donor";
@@ -23,6 +25,7 @@ public class FoodPost extends ParseObject {
     public static final String KEY_ENDTIME="end_time";
 
     public static final String KEY_STATUS= "status";
+    public static final String KEY_CREATED_KEY="createdAt";
 
     public ParseUser getDonor() {
         return getParseUser(KEY_DONOR);
@@ -129,4 +132,7 @@ public class FoodPost extends ParseObject {
         put(KEY_STATUS, status);
     }
 
+    public Date getTime(){
+        return getDate(KEY_CREATED_KEY);
+    }
 }
