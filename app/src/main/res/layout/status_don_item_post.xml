@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="sans-serif-black"
+        android:textSize="30sp"
+        tools:text="Food" />
+
+    <TextView
+        android:id="@+id/tvDonorName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="20sp"
+        tools:text="Donor" />
+
+    <TextView
+        android:id="@+id/tvDetails"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="20sp"
+        tools:text="Bread packets" />
+
+    <TextView
+        android:id="@+id/tvQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="20sp"
+        tools:text="Few loafs of bread" />
+
+<!--    <CheckedTextView-->
+<!--        android:id="@+id/checkedTextView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="CheckedTextView" />-->
+
+<!--    <CheckedTextView-->
+<!--        android:id="@+id/simpleCheckedTextView"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:checked="false"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="20sp"-->
+<!--        android:checkMark="@drawable/checked"-->
+<!--        android:text="Checked Text View" />-->
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="20sp"
+        tools:text="Texas" />
+
+    <TextView
+        android:id="@+id/tvZipCode"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:inputType="number"
+        android:textSize="20sp"
+        tools:text="76012" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="20sp"
+        tools:text="Order picked up by this person" />
+
+    <TextView
+        android:id="@+id/tvVolunteer"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="20sp"
+        tools:text="Volunteer" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel" />
+
+</LinearLayout>
