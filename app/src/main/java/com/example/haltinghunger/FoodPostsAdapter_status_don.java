@@ -4,10 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.parse.ParseFile;
 
 import java.util.List;
 
@@ -50,35 +54,36 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;
-        TextView tvDonorName;
         TextView tvDetails;
         TextView tvQuantity;
         TextView tvLocation;
         TextView tvZipCode;
         TextView tvStatus;
-        TextView tvVolunteer;
+        ImageView ivImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvDonorName = itemView.findViewById(R.id.tvDonorName);
             tvDetails = itemView.findViewById(R.id.tvDetails);
             tvQuantity = itemView.findViewById(R.id.tvQuantity);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             tvZipCode = itemView.findViewById(R.id.tvZipCode);
             tvStatus=itemView.findViewById(R.id.tvStatus);
-            tvVolunteer=itemView.findViewById(R.id.tvVolunteer);
+            ivImage=itemView.findViewById(R.id.ivImage);
         }
 
         public void bind(FoodPost fp) {
             tvTitle.setText(fp.getTitle());
-            tvDonorName.setText(fp.getDonor().getUsername());
             tvDetails.setText(fp.getDetails());
             tvQuantity.setText(fp.getQuantity());
             tvLocation.setText(fp.getLocation());
             tvZipCode.setText(String.valueOf(fp.getZipCode()));
             tvStatus.setText(fp.getStatus());
-//            tvVolunteer.setText(fp.getDonor().getUsername());
+            ParseFile image=fp.getImage();
+            if(image!=null){
+                Glide.with(context).load(fp.getImage().getUrl()).into(ivImage);
+            }
+
         }
     }
 
