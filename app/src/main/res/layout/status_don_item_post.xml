@@ -47,21 +47,47 @@
             android:textSize="25sp"
             tools:text="Few loafs of bread" />
 
-<!--            <CheckedTextView-->
-<!--                android:id="@+id/checkedTextView"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="CheckedTextView" />-->
+        <TextView
+            android:id="@+id/tvStart"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:fontFamily="cursive"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            tools:text="05/06/2021 10:00 PM" />
 
-        <!--    <CheckedTextView-->
-        <!--        android:id="@+id/simpleCheckedTextView"-->
-        <!--        android:layout_width="fill_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:checked="false"-->
-        <!--        android:gravity="center"-->
-        <!--        android:textSize="25sp"-->
-        <!--        android:checkMark="@drawable/checked"-->
-        <!--        android:text="Checked Text View" />-->
+        <TextView
+            android:id="@+id/tvEnd"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:fontFamily="cursive"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            tools:text="05/06/2021 11:00 PM" />
+
+        <CheckedTextView
+            android:id="@+id/ckNv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:fontFamily="cursive"
+            android:textColor="#000000"
+            android:checkMark="@drawable/cancel"
+            android:text="Non-Veg"/>
+
+        <CheckedTextView
+            android:id="@+id/ckHm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:fontFamily="cursive"
+            android:textColor="#000000"
+            android:checkMark="@drawable/cancel"
+            android:text="Homemade" />
 
         <TextView
             android:id="@+id/tvLocation"

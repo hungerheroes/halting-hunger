@@ -26,7 +26,7 @@ public class FoodPost extends ParseObject {
 
     public static final String KEY_STATUS= "status";
     public static final String KEY_CREATED_KEY="createdAt";
-
+    public static final String KEY_VOLUNTEER="beneficiary";
 
     public ParseUser getDonor() {
         return getParseUser(KEY_DONOR);
@@ -34,6 +34,14 @@ public class FoodPost extends ParseObject {
 
     public void setDonor(ParseUser donor) {
         put(KEY_DONOR, donor);
+    }
+
+    public ParseUser getVolunteer() {
+        return getParseUser(KEY_VOLUNTEER);
+    }
+
+    public void setVolunteer(ParseUser volunteer) {
+        put(KEY_VOLUNTEER, volunteer);
     }
 
     public String getTitle() {
