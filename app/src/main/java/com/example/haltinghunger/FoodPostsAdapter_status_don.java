@@ -1,9 +1,11 @@
 package com.example.haltinghunger;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,11 +44,6 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
         return foodPosts.size();
     }
 
-//    public void clear() {
-//        posts.clear();
-//        notifyDataSetChanged();
-//    }
-//
 //    public void addAll(List<Post> posts) {
 //        this.posts.addAll(posts);
 //        notifyDataSetChanged();
@@ -60,6 +57,10 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
         TextView tvZipCode;
         TextView tvStatus;
         ImageView ivImage;
+        CheckedTextView ckNv;
+        CheckedTextView ckHm;
+        TextView tvStart;
+        TextView tvEnd;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,6 +71,10 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
             tvZipCode = itemView.findViewById(R.id.tvZipCode);
             tvStatus=itemView.findViewById(R.id.tvStatus);
             ivImage=itemView.findViewById(R.id.ivImage);
+            ckNv=itemView.findViewById(R.id.ckNv);
+            ckHm=itemView.findViewById(R.id.ckHm);
+            tvStart=itemView.findViewById(R.id.tvStart);
+            tvEnd=itemView.findViewById(R.id.tvEnd);
         }
 
         public void bind(FoodPost fp) {
@@ -82,6 +87,15 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
             ParseFile image=fp.getImage();
             if(image!=null){
                 Glide.with(context).load(fp.getImage().getUrl()).into(ivImage);
+            }
+
+            tvStart.setText(fp.getStartDate()+" "+fp.getStartTime());
+            tvEnd.setText(fp.getEndDate()+" "+fp.getEndTime());
+            if(fp.getNV()==true){
+                ckNv.setCheckMarkDrawable(R.drawable.check);
+            }
+            if(fp.getHM()==true){
+                ckHm.setCheckMarkDrawable(R.drawable.check);
             }
 
         }
