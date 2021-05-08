@@ -19,6 +19,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -85,8 +86,9 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
             tvQuantity.setText(fp.getQuantity());
             tvLocation.setText(fp.getLocation());
             tvZipCode.setText(String.valueOf(fp.getZipCode()));
-            String currentUsername = ParseUser.getCurrentUser().getUsername();
-            String currentUserId = ParseUser.getCurrentUser().getObjectId();
+            ParseUser parseUser = ParseUser.getCurrentUser();
+            String currentUsername = parseUser.getUsername();
+            String currentUserId = parseUser.getObjectId();
             btnPickup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -98,8 +100,10 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
                                 // Now let's update it with some new data. In this case, only cheatMode and score
                                 // will get sent to the Parse Cloud. playerName hasn't changed.
                                 postObj.put("status", "Pickup confirmed by "+currentUsername);
+                                postObj.put("beneficiary",parseUser);
                                 postObj.saveInBackground();
                                 Toast.makeText(context.getApplicationContext(), "Picked up",Toast.LENGTH_SHORT).show();
+
                                 Log.i("Stat","Picked Successful");
                             } else {
                                 // Failed
