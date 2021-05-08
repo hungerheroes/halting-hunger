@@ -15,6 +15,7 @@
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
+        android:fontFamily="@font/aref_ruqaa"
         tools:ems="10" />
 
     <EditText
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Password"
+        android:fontFamily="@font/aref_ruqaa"
         android:inputType="textPassword" />
 
     <EditText
@@ -31,6 +33,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Phone"
+        android:fontFamily="@font/aref_ruqaa"
         android:inputType="textPersonName" />
 
     <EditText
@@ -40,6 +43,7 @@
         android:ems="10"
         android:gravity="start|top"
         android:hint="Address"
+        android:fontFamily="@font/aref_ruqaa"
         android:inputType="textMultiLine" />
 
     <EditText
@@ -48,6 +52,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Email"
+        android:fontFamily="@font/aref_ruqaa"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -56,12 +61,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Organization"
+        android:fontFamily="@font/aref_ruqaa"
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/aref_ruqaa"
         android:text="Sign Up" />
 
 </LinearLayout>

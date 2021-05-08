@@ -21,6 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:ems="10"
+                android:fontFamily="@font/aref_ruqaa"
                 android:hint="Title" />
 
             <EditText
@@ -28,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:ems="10"
+                android:fontFamily="@font/aref_ruqaa"
                 android:hint="Details" />
 
             <Button
@@ -47,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:ems="10"
+                android:fontFamily="@font/aref_ruqaa"
                 android:hint="Quantity" />
 
             <TextView
@@ -56,6 +59,7 @@
                 android:text="Start Date/Time:"
                 android:textColor="#070707"
                 android:textSize="18sp"
+                android:fontFamily="@font/aref_ruqaa"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -68,6 +72,7 @@
                     android:layout_height="60dp"
                     android:ems="10"
                     android:hint="Month"
+                    android:fontFamily="@font/aref_ruqaa"
                     android:inputType="number" />
 
                 <EditText
@@ -77,6 +82,7 @@
                     android:layout_toRightOf="@id/etMonth"
                     android:ems="10"
                     android:hint="Date"
+                    android:fontFamily="@font/aref_ruqaa"
                     android:inputType="number" />
 
                 <EditText
@@ -86,6 +92,7 @@
                     android:layout_toRightOf="@id/etDate"
                     android:ems="10"
                     android:hint="Year"
+                    android:fontFamily="@font/aref_ruqaa"
                     android:inputType="number" />
 
                 <EditText
@@ -96,6 +103,7 @@
                     android:layout_toRightOf="@id/etYear"
                     android:ems="10"
                     android:hint="Hour"
+                    android:fontFamily="@font/aref_ruqaa"
                     android:inputType="number" />
 
                 <EditText
@@ -105,6 +113,7 @@
                     android:layout_toRightOf="@id/etHour"
                     android:ems="10"
                     android:hint="Min"
+                    android:fontFamily="@font/aref_ruqaa"
                     android:inputType="number" />
 
                 <EditText
@@ -124,6 +133,7 @@
                 android:text="End Date/Time:"
                 android:textColor="#070707"
                 android:textSize="18sp"
+                android:fontFamily="@font/aref_ruqaa"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -136,6 +146,7 @@
                     android:layout_height="60dp"
                     android:ems="10"
                     android:hint="Month"
+                    android:fontFamily="@font/aref_ruqaa"
                     android:inputType="number" />
 
                 <EditText
@@ -145,6 +156,7 @@
                     android:layout_toRightOf="@id/etMonth1"
                     android:ems="10"
                     android:hint="Date"
+                    android:fontFamily="@font/aref_ruqaa"
                     android:inputType="number" />
 
                 <EditText
@@ -154,6 +166,7 @@
                     android:layout_toRightOf="@id/etDate1"
                     android:ems="10"
                     android:hint="Year"
+                    android:fontFamily="@font/aref_ruqaa"
                     android:inputType="number" />
 
                 <EditText
@@ -164,6 +177,7 @@
                     android:layout_toRightOf="@id/etYear1"
                     android:ems="10"
                     android:hint="Hour"
+                    android:fontFamily="@font/aref_ruqaa"
                     android:inputType="number" />
 
                 <EditText
@@ -173,6 +187,7 @@
                     android:layout_toRightOf="@id/etHour1"
                     android:ems="10"
                     android:hint="Min"
+                    android:fontFamily="@font/aref_ruqaa"
                     android:inputType="number" />
 
                 <EditText
@@ -191,6 +206,7 @@
                 android:text="Non-Vegetarian"
                 android:textColor="#070707"
                 android:textSize="18sp"
+                android:fontFamily="@font/aref_ruqaa"
                 android:textStyle="bold" />
 
             <CheckBox
@@ -200,6 +216,7 @@
                 android:text="HomeMade"
                 android:textColor="#070707"
                 android:textSize="18sp"
+                android:fontFamily="@font/aref_ruqaa"
                 android:textStyle="bold" />
 
             <EditText
@@ -209,6 +226,7 @@
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="Location"
+                android:fontFamily="@font/aref_ruqaa"
                 android:inputType="textMultiLine" />
 
             <EditText
@@ -217,13 +235,15 @@
                 android:layout_height="60dp"
                 android:ems="10"
                 android:hint="ZipCode"
+                android:fontFamily="@font/aref_ruqaa"
                 android:inputType="number" />
 
             <Button
                 android:id="@+id/btnSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Post" />
+                android:text="Post"
+                android:fontFamily="@font/aref_ruqaa"/>
         </LinearLayout>
 
     </ScrollView>
