@@ -22,6 +22,12 @@ The following functionality is completed:
 - [x] Volunteers upcoming pickups are added under status fragment of volunteer
 - [x] Completed UI formatting, modified logo and colors. 
 
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/hungerheroes/halting-hunger/blob/master/sprint4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 ## Sprint-3 User Stories
 The following functionality is completed:
 
