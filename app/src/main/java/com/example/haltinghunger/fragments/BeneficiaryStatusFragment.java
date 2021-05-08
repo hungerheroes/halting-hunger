@@ -1,59 +1,44 @@
 package com.example.haltinghunger.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.haltinghunger.BenStatusAdaptor;
+import com.example.haltinghunger.FoodPost;
+import com.example.haltinghunger.FoodPostsAdapter;
+import com.example.haltinghunger.FoodPostsAdapter_status_don;
 import com.example.haltinghunger.R;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BeneficiaryStatusFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class BeneficiaryStatusFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public static final String TAG="Status_Benificiary";
+    protected RecyclerView rvStatusBeneficiary;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    protected BenStatusAdaptor adapter;
+    protected List<FoodPost> allPosts;
+
+    private SwipeRefreshLayout benSwipeContainer;
 
     public BeneficiaryStatusFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BeneficiaryStatusFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static BeneficiaryStatusFragment newInstance(String param1, String param2) {
-        BeneficiaryStatusFragment fragment = new BeneficiaryStatusFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -61,5 +46,48 @@ public class BeneficiaryStatusFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_beneficiary_status, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        rvStatusBeneficiary= view.findViewById(R.id.rvStatusBeneficiary);
+        benSwipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.benSwipeContainer);
+        allPosts=new ArrayList<>();
+        adapter = new BenStatusAdaptor(getContext(),allPosts);
+        rvStatusBeneficiary.setAdapter(adapter);
+        rvStatusBeneficiary.setLayoutManager(new LinearLayoutManager(getContext()));
+        queryPosts();
+
+        benSwipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                adapter.clear();
+                queryPosts();
+                benSwipeContainer.setRefreshing(false);
+            }
+        });
+    }
+
+    protected void queryPosts() {
+        ParseQuery<FoodPost> query=ParseQuery.getQuery(FoodPost.class);
+        query.include(FoodPost.KEY_VOLUNTEER);
+        query.whereEqualTo(FoodPost.KEY_VOLUNTEER, ParseUser.getCurrentUser());
+        query.setLimit(20);
+        query.findInBackground(new FindCallback<FoodPost>() {
+            @Override
+            public void done(List<FoodPost> objects, ParseException e) {
+                if(e!=null){
+                    Log.e(TAG,"Issue with getting posts");
+                    return;
+                }
+                for(FoodPost post:objects){
+                    Log.i(TAG,"Title: "+post.getTitle()+", Status: "+post.getStatus());
+                }
+                allPosts.addAll(objects);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
     }
 }
