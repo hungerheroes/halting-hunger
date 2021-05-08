@@ -29,7 +29,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvDetails"
+                android:id="@+id/tvStatusTitle"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:fontFamily="cursive"
@@ -39,7 +39,7 @@
                 tools:text="Bread packets" />
 
             <TextView
-                android:id="@+id/tvQuantity"
+                android:id="@+id/tvStatusDesc"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:fontFamily="cursive"
@@ -91,7 +91,7 @@
                 android:textSize="25sp" />
 
             <TextView
-                android:id="@+id/tvLocation"
+                android:id="@+id/tvStatusLocation"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:fontFamily="cursive"

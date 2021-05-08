@@ -1,13 +1,11 @@
 package com.example.haltinghunger;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckedTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +17,6 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -72,9 +69,9 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvDonorName = itemView.findViewById(R.id.tvDonorName);
-            tvDetails = itemView.findViewById(R.id.tvDetails);
-            tvQuantity = itemView.findViewById(R.id.tvQuantity);
-            tvLocation = itemView.findViewById(R.id.tvLocation);
+            tvDetails = itemView.findViewById(R.id.tvStatusTitle);
+            tvQuantity = itemView.findViewById(R.id.tvStatusDesc);
+            tvLocation = itemView.findViewById(R.id.tvStatusLocation);
             tvZipCode = itemView.findViewById(R.id.tvZipCode);
             btnPickup = itemView.findViewById(R.id.btnPickup);
         }

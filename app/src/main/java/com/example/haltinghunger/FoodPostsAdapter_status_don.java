@@ -8,18 +8,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.haltinghunger.fragments_don.StatusFragment;
 import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 import java.util.List;
 
@@ -72,9 +67,9 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvDetails = itemView.findViewById(R.id.tvDetails);
-            tvQuantity = itemView.findViewById(R.id.tvQuantity);
-            tvLocation = itemView.findViewById(R.id.tvLocation);
+            tvDetails = itemView.findViewById(R.id.tvStatusTitle);
+            tvQuantity = itemView.findViewById(R.id.tvStatusDesc);
+            tvLocation = itemView.findViewById(R.id.tvStatusLocation);
             tvZipCode = itemView.findViewById(R.id.tvZipCode);
             tvStatus=itemView.findViewById(R.id.tvStatus);
             ivImage=itemView.findViewById(R.id.ivImage);
