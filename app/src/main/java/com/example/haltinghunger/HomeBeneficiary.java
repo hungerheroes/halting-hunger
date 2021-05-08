@@ -23,7 +23,6 @@ public class HomeBeneficiary extends AppCompatActivity {
     public static final String TAG = "HomeBeneficiary";
     final FragmentManager fragmentManager = getSupportFragmentManager();
     RecyclerView rvPosts;
-    List<Post> posts;
     FoodPostsAdapter adapter;
     private BottomNavigationView bottomNavigationView;
 
