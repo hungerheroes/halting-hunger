@@ -11,6 +11,17 @@
 ### Description
 Halting Hunger is a platform that connects food donors and volunteers, who are willing to deliver food to people in need. Donor can post food details and location in the app. Volunteers can check for donors based on their location and pick up the food from them. 
 
+## Sprint-4 User Stories
+The following functionality is completed:
+- [x] Created UI page for Donor status tracking
+- [x] Created UI page for Volunteer upcoming pickup tracking
+- [x] Donor can check the status of posts he created under status tab
+- [x] Donor can cancel and delete the post.
+- [x] Donor posts status gets updated based on volunteers actions(pickup)
+- [x] Volunteer can select post to pickup 
+- [x] Volunteers upcoming pickups are added under status fragment of volunteer
+
+
 ## Sprint-3 User Stories
 The following functionality is completed:
 
