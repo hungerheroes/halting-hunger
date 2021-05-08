@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cont"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -32,83 +31,77 @@
                 android:id="@+id/tvDetails"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:fontFamily="cursive"
+                android:fontFamily="@font/aref_ruqaa"
                 android:textColor="#000000"
                 android:textSize="25sp"
-                android:textStyle="bold"
                 tools:text="Bread packets" />
 
             <TextView
                 android:id="@+id/tvQuantity"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:fontFamily="cursive"
                 android:textColor="#000000"
                 android:textSize="25sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/aref_ruqaa"
                 tools:text="Few loafs of bread" />
 
             <TextView
                 android:id="@+id/tvStart"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
-                android:fontFamily="cursive"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/aref_ruqaa"
                 tools:text="05/06/2021 10:00 PM" />
 
             <TextView
                 android:id="@+id/tvEnd"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
-                android:fontFamily="cursive"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/aref_ruqaa"
                 tools:text="05/06/2021 11:00 PM" />
 
             <CheckedTextView
                 android:id="@+id/ckNv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:checkMark="@drawable/cancel"
-                android:fontFamily="cursive"
                 android:gravity="center"
                 android:text="Non-Veg"
                 android:textColor="#000000"
+                android:fontFamily="@font/aref_ruqaa"
                 android:textSize="25sp" />
 
             <CheckedTextView
                 android:id="@+id/ckHm"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:checkMark="@drawable/cancel"
-                android:fontFamily="cursive"
                 android:gravity="center"
                 android:text="Homemade"
                 android:textColor="#000000"
+                android:fontFamily="@font/aref_ruqaa"
                 android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/tvLocation"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:fontFamily="cursive"
                 android:textColor="#000000"
                 android:textSize="25sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/aref_ruqaa"
                 tools:text="Texas" />
 
             <TextView
                 android:id="@+id/tvZipCode"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
-                android:fontFamily="cursive"
                 android:inputType="number"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/aref_ruqaa"
                 tools:text="76012" />
         </LinearLayout>
 
@@ -135,10 +128,9 @@
         android:id="@+id/tvStatus"
         android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:fontFamily="cursive"
         android:textColor="#000000"
         android:textSize="25sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/aref_ruqaa"
         tools:text="Order picked up by this person" />
 
     <Button
@@ -146,6 +138,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/aref_ruqaa"
         android:text="Cancel" />
 
 </LinearLayout>

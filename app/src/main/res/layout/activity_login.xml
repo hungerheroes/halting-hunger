@@ -25,8 +25,9 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="270dp"
         android:layout_weight="1"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/bg2" />
 
     <EditText
@@ -36,6 +37,7 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="Username"
+        android:fontFamily="@font/aref_ruqaa"
         android:inputType="textPersonName" />
 
     <EditText
@@ -45,6 +47,7 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="Password"
+        android:fontFamily="@font/aref_ruqaa"
         android:inputType="textPassword" />
 
     <RadioGroup
@@ -56,15 +59,19 @@
         <RadioButton
             android:id="@+id/loginDonarBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_weight="1"
+            android:fontFamily="@font/aref_ruqaa"
+            android:textSize="20sp"
             android:text="Donor" />
 
         <RadioButton
             android:id="@+id/loginVolunteerBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_weight="1"
+            android:textSize="20sp"
+            android:fontFamily="@font/aref_ruqaa"
             android:text="Volunteer" />
     </RadioGroup>
 
@@ -73,6 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_weight="1"
+        android:fontFamily="@font/aref_ruqaa"
         android:text="Login" />
 
     <Button
@@ -80,6 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_weight="1"
+        android:fontFamily="@font/aref_ruqaa"
         android:text="Sign Up" />
 
 </LinearLayout>
