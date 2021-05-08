@@ -11,6 +11,22 @@
 ### Description
 Halting Hunger is a platform that connects food donors and volunteers, who are willing to deliver food to people in need. Donor can post food details and location in the app. Volunteers can check for donors based on their location and pick up the food from them. 
 
+## Sprint-3 User Stories
+The following functionality is completed:
+
+- [x] Volunteer can filter posts based on zipcode
+- [x] Volunteer can search for items based on name
+- [x] Donor can upload image in the food post
+- [x] Displaying fragments in Donor homepage
+- [x] Added the date and time in Donor post.
+- [x] Zipcode can be seen in posts listing page
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/hungerheroes/halting-hunger/blob/master/sprint3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 ## Sprint-2 User Stories
 The following functionality is completed:
 
