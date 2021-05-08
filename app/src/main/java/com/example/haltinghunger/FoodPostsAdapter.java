@@ -2,14 +2,23 @@ package com.example.haltinghunger;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -57,7 +66,7 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
         TextView tvQuantity;
         TextView tvLocation;
         TextView tvZipCode;
-
+        Button  btnPickup;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
@@ -66,6 +75,7 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
             tvQuantity = itemView.findViewById(R.id.tvQuantity);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             tvZipCode = itemView.findViewById(R.id.tvZipCode);
+            btnPickup = itemView.findViewById(R.id.btnPickup);
         }
 
         public void bind(FoodPost fp) {
@@ -75,6 +85,31 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
             tvQuantity.setText(fp.getQuantity());
             tvLocation.setText(fp.getLocation());
             tvZipCode.setText(String.valueOf(fp.getZipCode()));
+            String currentUsername = ParseUser.getCurrentUser().getUsername();
+            String currentUserId = ParseUser.getCurrentUser().getObjectId();
+            btnPickup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ParseQuery<ParseObject> post = ParseQuery.getQuery("Post");
+                    post.getInBackground(fp.getObjectId(), new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject postObj, ParseException e) {
+                            if (e == null) {
+                                // Now let's update it with some new data. In this case, only cheatMode and score
+                                // will get sent to the Parse Cloud. playerName hasn't changed.
+                                postObj.put("status", "Pickup confirmed by "+currentUsername);
+                                postObj.saveInBackground();
+                                Toast.makeText(context.getApplicationContext(), "Picked up",Toast.LENGTH_SHORT).show();
+                                Log.i("Stat","Picked Successful");
+                            } else {
+                                // Failed
+                                Log.e("Stat",e.getMessage(),e);
+                            }
+                        }
+                    });
+
+                }
+            });
         }
     }
 
