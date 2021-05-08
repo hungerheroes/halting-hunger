@@ -37,15 +37,6 @@
                 tools:text="Bread packets" />
 
             <TextView
-                android:id="@+id/tvQuantity"
-                android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:textColor="#000000"
-                android:textSize="25sp"
-                android:fontFamily="@font/aref_ruqaa"
-                tools:text="Few loafs of bread" />
-
-            <TextView
                 android:id="@+id/tvStart"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"

@@ -40,7 +40,6 @@ public class ComposeFragment extends Fragment {
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     private EditText etTitle;
     private EditText etDetails;
-    private EditText etQuantity;
     private CheckBox chNVeg;
     private CheckBox chHomemade;
     private EditText etLocation;
@@ -93,7 +92,6 @@ public class ComposeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         etTitle = view.findViewById(R.id.etTitle);
         etDetails = view.findViewById(R.id.etDetails);
-        etQuantity = view.findViewById(R.id.etQuantity);
         chNVeg = view.findViewById(R.id.chNVeg);
         chHomemade = view.findViewById(R.id.chHomemade);
         etLocation = view.findViewById(R.id.etLocation);
@@ -133,8 +131,6 @@ public class ComposeFragment extends Fragment {
                     return;
                 }
                 String details = etDetails.getText().toString();
-                String quantity = etQuantity.getText().toString();
-
                 String start_date=(etMonth.getText().toString())+"/"+(etDate.getText().toString())+"/"+(etYear.getText().toString());
                 String start_time=(etHour.getText().toString())+":"+(etMin.getText().toString())+" "+(etAmPm.getText().toString());
                 String end_date=(etMonth1.getText().toString())+"/"+(etDate1.getText().toString())+"/"+(etYear1.getText().toString());
@@ -154,7 +150,7 @@ public class ComposeFragment extends Fragment {
                     return;
                 }
                 String status="Waiting for confirmation";
-                savePost(currentUser, title, details, quantity, nv, hm, location, zip,photoFile, start_date,start_time,end_date,end_time,status);
+                savePost(currentUser, title, details, nv, hm, location, zip,photoFile, start_date,start_time,end_date,end_time,status);
             }
         });
     }
@@ -213,12 +209,11 @@ public class ComposeFragment extends Fragment {
 
 
     }
-    private void savePost(ParseUser currentUser, String title, String details, String quantity, Boolean nv, Boolean hm, String location, Integer zip, File photoFile, String start_date, String start_time, String end_date, String end_time, String status) {
+    private void savePost(ParseUser currentUser, String title, String details, Boolean nv, Boolean hm, String location, Integer zip, File photoFile, String start_date, String start_time, String end_date, String end_time, String status) {
         FoodPost fp = new FoodPost();
         fp.setDonor(currentUser);
         fp.setTitle(title);
         fp.setDetails(details);
-        fp.setQuantity(quantity);
         fp.setNV(nv);
         fp.setHM(hm);
         fp.setLocation(location);
@@ -239,7 +234,6 @@ public class ComposeFragment extends Fragment {
                 Log.i(TAG, "Post saved successfully");
                 etTitle.setText("");
                 etDetails.setText("");
-                etQuantity.setText("");
                 chNVeg.setChecked(false);
                 chHomemade.setChecked(false);
                 etLocation.setText("");

@@ -58,7 +58,6 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;
         TextView tvDetails;
-        TextView tvQuantity;
         TextView tvLocation;
         TextView tvZipCode;
         TextView tvStatus;
@@ -73,7 +72,6 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvDetails = itemView.findViewById(R.id.tvDetails);
-            tvQuantity = itemView.findViewById(R.id.tvQuantity);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             tvZipCode = itemView.findViewById(R.id.tvZipCode);
             tvStatus=itemView.findViewById(R.id.tvStatus);
@@ -88,7 +86,6 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
         public void bind(FoodPost fp) {
             tvTitle.setText(fp.getTitle());
             tvDetails.setText(fp.getDetails());
-            tvQuantity.setText(fp.getQuantity());
             tvLocation.setText(fp.getLocation());
             tvZipCode.setText(String.valueOf(fp.getZipCode()));
             tvStatus.setText(fp.getStatus());

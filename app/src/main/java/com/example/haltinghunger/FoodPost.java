@@ -13,7 +13,6 @@ public class FoodPost extends ParseObject {
     public static final String KEY_DONOR = "donor";
     public static final String KEY_TITLE = "title";
     public static final String KEY_DETAILS = "details";
-    public static final String KEY_QUANTITY = "quantity";
     public static final String KEY_NV = "nonvegetarian";
     public static final String KEY_HM = "homemade";
     public static final String KEY_LOCATION = "location";
@@ -59,13 +58,6 @@ public class FoodPost extends ParseObject {
     }
     public void setDetails(String details) {
         put(KEY_DETAILS, details);
-    }
-
-    public String getQuantity() {
-        return getString(KEY_QUANTITY);
-    }
-    public void setQuantity(String quantity) {
-        put(KEY_QUANTITY, quantity);
     }
 
     public Boolean getNV() {
