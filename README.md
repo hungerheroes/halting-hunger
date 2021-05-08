@@ -20,7 +20,7 @@ The following functionality is completed:
 - [x] Donor posts status gets updated based on volunteers actions(pickup)
 - [x] Volunteer can select post to pickup 
 - [x] Volunteers upcoming pickups are added under status fragment of volunteer
-
+- [x] Completed UI formatting, modified logo and colors. 
 
 ## Sprint-3 User Stories
 The following functionality is completed:
