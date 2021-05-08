@@ -9,72 +9,127 @@
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_height="46dp"
+        android:fontFamily="cursive"
+        android:textColor="#AF3A3A"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        tools:text="Food Title"  />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDetails"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:fontFamily="@font/aref_ruqaa"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                tools:text="Bread packets" />
+
+            <TextView
+                android:id="@+id/tvStart"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:fontFamily="@font/aref_ruqaa"
+                tools:text="05/06/2021 10:00 PM" />
+
+            <TextView
+                android:id="@+id/tvEnd"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:fontFamily="@font/aref_ruqaa"
+                tools:text="05/06/2021 11:00 PM" />
+
+            <CheckedTextView
+                android:id="@+id/ckNv"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:checkMark="@drawable/cancel"
+                android:gravity="center"
+                android:text="Non-Veg"
+                android:textColor="#000000"
+                android:fontFamily="@font/aref_ruqaa"
+                android:textSize="25sp" />
+
+            <CheckedTextView
+                android:id="@+id/ckHm"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:checkMark="@drawable/cancel"
+                android:gravity="center"
+                android:text="Homemade"
+                android:textColor="#000000"
+                android:fontFamily="@font/aref_ruqaa"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:fontFamily="@font/aref_ruqaa"
+                tools:text="Texas" />
+
+            <TextView
+                android:id="@+id/tvZipCode"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:fontFamily="@font/aref_ruqaa"
+                tools:text="76012" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/bg" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/MarkDonor"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:fontFamily="cursive"
+        android:text="Donor:"
+        android:textColor="#AF3A3A"
         android:textSize="30sp"
-        tools:text="Food" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvDonorName"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="20sp"
-        tools:text="Donor" />
-
-    <TextView
-        android:id="@+id/tvStatusTitle"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="20sp"
-        tools:text="Bread packets" />
-
-    <TextView
-        android:id="@+id/tvStatusDesc"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="20sp"
-        tools:text="Few loafs of bread" />
-
-<!--    <CheckedTextView-->
-<!--        android:id="@+id/checkedTextView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="CheckedTextView" />-->
-
-<!--    <CheckedTextView-->
-<!--        android:id="@+id/simpleCheckedTextView"-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:checked="false"-->
-<!--        android:gravity="center"-->
-<!--        android:textSize="20sp"-->
-<!--        android:checkMark="@drawable/checked"-->
-<!--        android:text="Checked Text View" />-->
-
-    <TextView
-        android:id="@+id/tvStatusLocation"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="20sp"
-        tools:text="Texas" />
-
-    <TextView
-        android:id="@+id/tvZipCode"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:inputType="number"
-        android:textSize="20sp"
-        tools:text="76012" />
+        android:layout_height="32dp"
+        android:fontFamily="@font/aref_ruqaa"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        tools:text="Donor name" />
 
     <Button
         android:id="@+id/btnPickup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/aref_ruqaa"
         android:text="Pickup" />
 
 </LinearLayout>

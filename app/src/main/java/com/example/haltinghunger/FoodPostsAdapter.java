@@ -6,14 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckedTextView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -61,28 +65,49 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
         TextView tvTitle;
         TextView tvDonorName;
         TextView tvDetails;
-        TextView tvQuantity;
         TextView tvLocation;
         TextView tvZipCode;
+        ImageView ivImage;
+        TextView tvStart;
+        TextView tvEnd;
+        CheckedTextView ckNv;
+        CheckedTextView ckHm;
+
         Button  btnPickup;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvDonorName = itemView.findViewById(R.id.tvDonorName);
-            tvDetails = itemView.findViewById(R.id.tvStatusTitle);
-            tvQuantity = itemView.findViewById(R.id.tvStatusDesc);
-            tvLocation = itemView.findViewById(R.id.tvStatusLocation);
+            tvDetails = itemView.findViewById(R.id.tvDetails);
+            tvLocation = itemView.findViewById(R.id.tvLocation);
             tvZipCode = itemView.findViewById(R.id.tvZipCode);
             btnPickup = itemView.findViewById(R.id.btnPickup);
+            ivImage=itemView.findViewById(R.id.ivImage);
+            ckNv=itemView.findViewById(R.id.ckNv);
+            ckHm=itemView.findViewById(R.id.ckHm);
+            tvStart=itemView.findViewById(R.id.tvStart);
+            tvEnd=itemView.findViewById(R.id.tvEnd);
         }
 
         public void bind(FoodPost fp) {
             tvTitle.setText(fp.getTitle());
             tvDonorName.setText(fp.getDonor().getUsername());
             tvDetails.setText(fp.getDetails());
-            tvQuantity.setText(fp.getQuantity());
             tvLocation.setText(fp.getLocation());
             tvZipCode.setText(String.valueOf(fp.getZipCode()));
+            ParseFile image=fp.getImage();
+            if(image!=null){
+                Glide.with(context).load(fp.getImage().getUrl()).into(ivImage);
+            }
+            tvStart.setText(fp.getStartDate()+" "+fp.getStartTime());
+            tvEnd.setText(fp.getEndDate()+" "+fp.getEndTime());
+            if(fp.getNV()==true){
+                ckNv.setCheckMarkDrawable(R.drawable.check);
+            }
+            if(fp.getHM()==true){
+                ckHm.setCheckMarkDrawable(R.drawable.check);
+            }
+
             ParseUser parseUser = ParseUser.getCurrentUser();
             String currentUsername = parseUser.getUsername();
             String currentUserId = parseUser.getObjectId();
