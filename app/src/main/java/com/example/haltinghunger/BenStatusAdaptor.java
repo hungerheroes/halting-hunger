@@ -1,9 +1,11 @@
 package com.example.haltinghunger;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,7 +28,7 @@ public class BenStatusAdaptor extends RecyclerView.Adapter<BenStatusAdaptor.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.fragment_upcoming, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.upcoming_item_post, parent, false);
         return new BenStatusAdaptor.ViewHolder(view);
     }
 
@@ -43,28 +45,54 @@ public class BenStatusAdaptor extends RecyclerView.Adapter<BenStatusAdaptor.View
 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvStTitle;
-        TextView tvStDetails;
         TextView tvStZipCode;
-        TextView tvStStatus;
         ImageView ivStImage;
+        TextView tvStart;
+        TextView tvEnd;
+        TextView tvLocation;
+        Button btnCancel;
+        Button btnComplete;
+
         public ViewHolder(@NonNull  View itemView){
             super(itemView);
-            tvStTitle = itemView.findViewById(R.id.tvStTitle);
-            tvStDetails = itemView.findViewById(R.id.tvStDetails);
-            tvStZipCode = itemView.findViewById(R.id.tvStZipCode);
-            tvStStatus = itemView.findViewById(R.id.tvStStatus);
-            ivStImage = itemView.findViewById(R.id.ivStImage);
+            tvStTitle = itemView.findViewById(R.id.tvTitle);
+            tvStZipCode = itemView.findViewById(R.id.tvZipCode);
+            ivStImage = itemView.findViewById(R.id.ivImage);
+            tvStart=itemView.findViewById(R.id.tvStart);
+            tvEnd=itemView.findViewById(R.id.tvEnd);
+            tvLocation=itemView.findViewById(R.id.tvLocation);
+            btnCancel= itemView.findViewById(R.id.btnCancel);
+            btnComplete=itemView.findViewById(R.id.btnComplete);
         }
 
         public void bind(FoodPost fp) {
             tvStTitle.setText(fp.getTitle());
-            tvStDetails.setText(fp.getDetails());
-            tvStStatus.setText(fp.getStatus());
             tvStZipCode.setText(String.valueOf(fp.getZipCode()));
             ParseFile image=fp.getImage();
             if(image!=null){
                 Glide.with(context).load(fp.getImage().getUrl()).into(ivStImage);
             }
+            tvStart.setText(fp.getStartDate()+" "+fp.getStartTime());
+            tvEnd.setText(fp.getEndDate()+" "+fp.getEndTime());
+            tvLocation.setText(fp.getLocation());
+
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    fp.put("status", "Waiting for confirmation");
+//                    fp.put("beneficiary",null);
+                    fp.saveInBackground();
+                }
+            });
+
+            btnComplete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    fp.put("status", "Pickup Completed");
+//                    fp.put("beneficiary",null);
+                    fp.saveInBackground();
+                }
+            });
         }
     }
 

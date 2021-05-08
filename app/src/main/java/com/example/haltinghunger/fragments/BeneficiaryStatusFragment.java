@@ -15,8 +15,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.haltinghunger.BenStatusAdaptor;
 import com.example.haltinghunger.FoodPost;
-import com.example.haltinghunger.FoodPostsAdapter;
-import com.example.haltinghunger.FoodPostsAdapter_status_don;
 import com.example.haltinghunger.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
