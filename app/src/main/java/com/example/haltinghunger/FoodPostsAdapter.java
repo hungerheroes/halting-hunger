@@ -27,10 +27,15 @@ import java.util.List;
 public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.ViewHolder> {
     Context context;
     List<FoodPost> foodPosts;
+    pickupFn pickupBtnFn;
+    public interface pickupFn{
+        void onPickup(int position,FoodPost fp);
+    }
 
-    public FoodPostsAdapter(Context context, List<FoodPost> foodPosts) {
+    public FoodPostsAdapter(Context context, List<FoodPost> foodPosts,pickupFn pickupBtnFn) {
         this.context = context;
         this.foodPosts = foodPosts;
+        this.pickupBtnFn=pickupBtnFn;
     }
 
     @NonNull
@@ -114,25 +119,27 @@ public class FoodPostsAdapter extends RecyclerView.Adapter<FoodPostsAdapter.View
             btnPickup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ParseQuery<ParseObject> post = ParseQuery.getQuery("Post");
-                    post.getInBackground(fp.getObjectId(), new GetCallback<ParseObject>() {
-                        @Override
-                        public void done(ParseObject postObj, ParseException e) {
-                            if (e == null) {
-                                // Now let's update it with some new data. In this case, only cheatMode and score
-                                // will get sent to the Parse Cloud. playerName hasn't changed.
-                                postObj.put("status", "Pickup confirmed by "+currentUsername);
-                                postObj.put("beneficiary",parseUser);
-                                postObj.saveInBackground();
-                                Toast.makeText(context.getApplicationContext(), "Picked up",Toast.LENGTH_SHORT).show();
+                    pickupBtnFn.onPickup(getAdapterPosition(),fp);
 
-                                Log.i("Stat","Picked Successful");
-                            } else {
-                                // Failed
-                                Log.e("Stat",e.getMessage(),e);
-                            }
-                        }
-                    });
+//                    ParseQuery<ParseObject> post = ParseQuery.getQuery("Post");
+//                    post.getInBackground(fp.getObjectId(), new GetCallback<ParseObject>() {
+//                        @Override
+//                        public void done(ParseObject postObj, ParseException e) {
+//                            if (e == null) {
+//                                // Now let's update it with some new data. In this case, only cheatMode and score
+//                                // will get sent to the Parse Cloud. playerName hasn't changed.
+//                                postObj.put("status", "Pickup confirmed by "+currentUsername);
+//                                postObj.put("beneficiary",parseUser);
+//                                postObj.saveInBackground();
+//                                Toast.makeText(context.getApplicationContext(), "Picked up",Toast.LENGTH_SHORT).show();
+//
+//                                Log.i("Stat","Picked Successful");
+//                            } else {
+//                                // Failed
+//                                Log.e("Stat",e.getMessage(),e);
+//                            }
+//                        }
+//                    });
 
                 }
             });

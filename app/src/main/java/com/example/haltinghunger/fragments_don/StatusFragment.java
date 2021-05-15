@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.haltinghunger.FoodPost;
 import com.example.haltinghunger.FoodPostsAdapter;
@@ -20,6 +21,7 @@ import com.example.haltinghunger.FoodPostsAdapter_status_don;
 import com.example.haltinghunger.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -53,7 +55,24 @@ public class StatusFragment extends Fragment {
         rvStatusDon= view.findViewById(R.id.rvStatusDon);
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         allPosts=new ArrayList<>();
-        adapter=new FoodPostsAdapter_status_don(getContext(),allPosts);
+
+        FoodPostsAdapter_status_don.canBtn var=new FoodPostsAdapter_status_don.canBtn(){
+            @Override
+            public void onCancelclick(int position, FoodPost fp) {
+                fp.deleteInBackground(e -> {
+                    if(e==null){
+                        Log.i("Stat","Delete Successful");
+                    }else{
+                        Log.e("Stat",e.getMessage(),e);
+                    }
+                });
+                adapter.notifyItemRemoved(position);
+                adapter.clear();
+                queryPosts();
+                Toast.makeText(getContext(),"Post deleted", Toast.LENGTH_SHORT).show();
+            }
+        };
+        adapter=new FoodPostsAdapter_status_don(getContext(),allPosts,var);
         rvStatusDon.setAdapter(adapter);
         rvStatusDon.setLayoutManager(new LinearLayoutManager(getContext()));
         queryPosts();

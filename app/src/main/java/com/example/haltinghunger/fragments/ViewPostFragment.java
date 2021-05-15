@@ -1,5 +1,6 @@
 package com.example.haltinghunger.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,10 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.haltinghunger.FoodPost;
 import com.example.haltinghunger.FoodPostsAdapter;
+import com.example.haltinghunger.HomeBeneficiary;
 import com.example.haltinghunger.R;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +82,42 @@ public class ViewPostFragment extends Fragment {
         rvDisplayPosts = view.findViewById(R.id.rvDisplayPosts);
 
         allPosts = new ArrayList<>();
-        adapter = new FoodPostsAdapter(getContext(), allPosts);
+
+        FoodPostsAdapter.pickupFn var=new FoodPostsAdapter.pickupFn(){
+            @Override
+            public void onPickup(int position, FoodPost fp) {
+                ParseUser parseUser = ParseUser.getCurrentUser();
+                String currentUsername = parseUser.getUsername();
+                String currentUserId = parseUser.getObjectId();
+                ParseQuery<ParseObject> post = ParseQuery.getQuery("Post");
+                post.getInBackground(fp.getObjectId(), new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject postObj, ParseException e) {
+                        if (e == null) {
+                            // Now let's update it with some new data. In this case, only cheatMode and score
+                            // will get sent to the Parse Cloud. playerName hasn't changed.
+                            postObj.put(FoodPost.KEY_STATUS, "Pickup confirmed by "+currentUsername);
+//                            postObj.put("beneficiary",parseUser);
+                            postObj.saveInBackground();
+//                            Toast.makeText(context.getApplicationContext(), "Picked up",Toast.LENGTH_SHORT).show();
+
+                            Log.i("Stat","Picked Successful");
+                        } else {
+                            // Failed
+                            Log.e("Stat",e.getMessage(),e);
+                        }
+                    }
+                });
+                adapter.notifyItemChanged(position);
+                adapter.notifyDataSetChanged();
+                queryPosts();
+                Toast.makeText(getContext(),"Confirming pickup..", Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(getContext(), HomeBeneficiary.class);
+                startActivity(i);
+            }
+        };
+        adapter = new FoodPostsAdapter(getContext(), allPosts,var);
 
         rvDisplayPosts.setAdapter(adapter);
         rvDisplayPosts.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -110,6 +151,8 @@ public class ViewPostFragment extends Fragment {
     private void queryPosts() {
         ParseQuery<FoodPost> query = ParseQuery.getQuery(FoodPost.class);
         query.include(FoodPost.KEY_DONOR);
+        query.whereEqualTo(FoodPost.KEY_STATUS, "Waiting for confirmation");
+        query.whereNotEqualTo(FoodPost.KEY_DONOR, ParseUser.getCurrentUser());
         query.findInBackground(new FindCallback<FoodPost>() {
             @Override
             public void done(List<FoodPost> FoodPosts, ParseException e) {
@@ -130,6 +173,8 @@ public class ViewPostFragment extends Fragment {
     private void queryPosts(Integer zipcode) {
         ParseQuery<FoodPost> query = ParseQuery.getQuery(FoodPost.class);
         query.include(FoodPost.KEY_DONOR);
+        query.whereEqualTo(FoodPost.KEY_STATUS, "Waiting for confirmation");
+        query.whereNotEqualTo(FoodPost.KEY_DONOR, ParseUser.getCurrentUser());
         query.whereEqualTo("zipcode", zipcode);
         query.findInBackground(new FindCallback<FoodPost>() {
             @Override
@@ -151,6 +196,8 @@ public class ViewPostFragment extends Fragment {
     private void queryPosts(String searchItem) {
         ParseQuery<FoodPost> query = ParseQuery.getQuery(FoodPost.class);
         query.include(FoodPost.KEY_DONOR);
+        query.whereEqualTo(FoodPost.KEY_STATUS, "Waiting for confirmation");
+        query.whereNotEqualTo(FoodPost.KEY_DONOR, ParseUser.getCurrentUser());
 //        query.whereContains("details", searchItem);
         query.whereMatches("details", "(" + searchItem + ")", "i");
         query.findInBackground(new FindCallback<FoodPost>() {

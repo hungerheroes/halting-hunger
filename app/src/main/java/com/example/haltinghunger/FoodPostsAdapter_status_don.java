@@ -21,10 +21,15 @@ import java.util.List;
 public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsAdapter_status_don.ViewHolder> {
     Context context;
     List<FoodPost> foodPosts;
+    canBtn cancelBtnfn;
+    public interface canBtn{
+        void onCancelclick(int position,FoodPost fp);
+    }
 
-    public FoodPostsAdapter_status_don(Context context, List<FoodPost> foodPosts) {
+    public FoodPostsAdapter_status_don(Context context, List<FoodPost> foodPosts,canBtn cancelBtnfn) {
         this.context = context;
         this.foodPosts = foodPosts;
+        this.cancelBtnfn=cancelBtnfn;
     }
 
     @NonNull
@@ -96,19 +101,22 @@ public class FoodPostsAdapter_status_don extends RecyclerView.Adapter<FoodPostsA
             if(fp.getHM()==true){
                 ckHm.setCheckMarkDrawable(R.drawable.check);
             }
-
+//            Log.i("Stat",fp.getStatus());
+//            if(fp.getStatus()=="Pickup Completed"){
+//                Log.i("Stat","incoming");
+//                btnCancel.setText("Remove from list");
+//            }
             btnCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    fp.deleteInBackground(e -> {
-                        if(e==null){
-                            Log.i("Stat","Delete Successful");
-//                            clear();
-//                            notifyDataSetChanged();
-                        }else{
-                            Log.e("Stat",e.getMessage(),e);
-                        }
-                    });
+                    cancelBtnfn.onCancelclick(getAdapterPosition(),fp);
+//                    fp.deleteInBackground(e -> {
+//                        if(e==null){
+//                            Log.i("Stat","Delete Successful");
+//                        }else{
+//                            Log.e("Stat",e.getMessage(),e);
+//                        }
+//                    });
                 }
             });
         }

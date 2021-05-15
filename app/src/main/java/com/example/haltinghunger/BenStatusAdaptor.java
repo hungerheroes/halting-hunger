@@ -13,17 +13,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 
 public class BenStatusAdaptor extends RecyclerView.Adapter<BenStatusAdaptor.ViewHolder> {
     Context context;
     List<FoodPost> foodPosts;
+    canBtn cancelBtnfn;
+    comBtn completeBtnfn;
 
-    public BenStatusAdaptor(Context context, List<FoodPost> foodPosts) {
+    public interface canBtn{
+        void onCancelclick(int position,FoodPost fp);
+    }
+
+    public interface comBtn{
+        void onComplete(int position,FoodPost fp);
+    }
+
+    public BenStatusAdaptor(Context context, List<FoodPost> foodPosts,canBtn cancelBtnfn,comBtn completeBtnfn) {
         this.context = context;
         this.foodPosts = foodPosts;
+        this.cancelBtnfn=cancelBtnfn;
+        this.completeBtnfn=completeBtnfn;
     }
     @NonNull
     @Override
@@ -79,18 +95,17 @@ public class BenStatusAdaptor extends RecyclerView.Adapter<BenStatusAdaptor.View
             btnCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    fp.put("status", "Waiting for confirmation");
-//                    fp.put("beneficiary",null);
-                    fp.saveInBackground();
+                    cancelBtnfn.onCancelclick(getAdapterPosition(),fp);
+//                    fp.put(FoodPost.KEY_STATUS, "Waiting for confirmation");
+////                    fp.put("beneficiary","Tftofbf1Ex");
+//                    fp.saveInBackground();
                 }
             });
 
             btnComplete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    fp.put("status", "Pickup Completed");
-//                    fp.put("beneficiary",null);
-                    fp.saveInBackground();
+                    completeBtnfn.onComplete(getAdapterPosition(),fp);
                 }
             });
         }
